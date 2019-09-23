@@ -1,0 +1,19 @@
+<header></header>
+<div class="container">
+    <h2 class="text-center">Restaurants Near You</h2>
+    <div class="row">
+        <div class="text-center col-lg-4 col-sm-6 card" *ngFor="let k of restList | async" style="cursor: pointer;"
+            (click)="onClick(k)" routerLink="/restaurant/details">
+            <div class="text-center mt-5 card ">
+                <div class="card-header">
+                    <h4>{{k.restaurant.name}}</h4>
+                </div>
+                <div class="card-body">
+                    <img src={{k.restaurant.featured_image}} class="img-thumbnail">
+                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>

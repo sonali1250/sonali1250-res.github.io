@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 offset-sm-4">
+      <div class="input-group mb-3 px-3 py-3 pt-md-3 pb-md-3 mx-auto text-center">
+        <form class="example-form">
+          <mat-form-field>
+            <!-- appearance="outline"--add this in tag for oultined mat-input -->
+            <mat-label>Input City Name</mat-label>
+            <input matInput placeholder="City" [(ngModel)]="city" (keydown)="search($event)"
+              [ngModelOptions]="{standalone: true}" color="accent">
+          </mat-form-field>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- by location search -->
+    <div class="col-sm-6 offset-sm-3 text-center">
+      <div class="alert alert-danger" role="alert" *ngIf="isLocationEmpty">
+        Please recheck the city name. It is either not served by Zomato or the spelling might be incorrect.
+      </div>
+      <div class="alert alert-light" role="alert" *ngFor="let city of locArray">
+        <div *ngIf="!hideCityTitle">
+          Did You Mean <strong>{{city.title}} </strong>?&nbsp;
+          <button mat-raised-button color="accent" (click)="getLocDetails(city)">Confirm</button>
+        </div>
+        <div *ngIf="hideCityTitle">
+          Top cuisines in {{city.title}}
+          <div class="padding-top-16">
+            <span class="badge badge-pill badge-primary cuisine-style" *ngFor="let cuisine of topCuisines">
+              {{cuisine}}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf=!hideResSearch>
+    <div class="col-sm-6 offset-sm-4">
+      <div class="input-group mb-3 px-3 py-3 pt-md-3 pb-md-3 mx-auto text-center">
+        <form class="example-form">
+          <mat-form-field class="example-full-width">
+            <!-- appearance="outline"--add this in tag for oultined mat-input -->
+            <mat-label>Search Restauarant</mat-label>
+            <input type="text" placeholder="Search Restaurant" [(ngModel)]="rest" aria-label="Restaurant" matInput
+              [matAutocomplete]="auto" [ngModelOptions]="{standalone: true}">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let s of bestRatedRestaurants" [value]="s.name" (click)="onClick(s)"
+                routerLink="/restaurant/details">
+                {{s.name}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <!-- search by loc -->
+    <div class="card text-center col-lg-4 col-sm-6 shadow-sm" *ngFor="let best of bestRatedRestaurants"
+      style="cursor: pointer;" (click)="onClick(best)" routerLink="/restaurant/details">
+      <div class="card text-center mt-5">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">{{best.name}}</h4>
+        </div>
+        <div class="card-body">
+          <img src={{best.featured_image}} class="img-thumbnail">
+          <button type="button" class="btn btn-lg btn-block btn-outline-primary">Know More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

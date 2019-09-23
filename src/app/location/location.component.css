@@ -1,0 +1,24 @@
+
+button { width: 200px;margin-top:20px; }
+  
+.top-margin { margin-top:50px; text-align: center;  }
+
+.jumbotron {
+    background: linear-gradient(
+        rgba(10,10,10, .3), 
+        rgba(10,10,10, .3)),
+        url('src/assets/images/bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    -o-background-size: cover;
+    padding-top: 0%;
+    padding-bottom: 19%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    
+}
+
+.h1 {
+
+    font-size: 95px;
+ }

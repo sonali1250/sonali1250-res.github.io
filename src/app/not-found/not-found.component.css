@@ -1,0 +1,27 @@
+.notfound h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: #000;
+    font-size: 45px;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-top: 0;
+  }
+  
+  .notfound p {
+    font-family: 'Montserrat', sans-serif;
+    color: #000;
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    margin-top: 0px;
+  }
+  
+
+  .notfound .notfound-404 h1 {
+    font-family: 'Montserrat', sans-serif;
+    color: #E74C3C;
+    text-align: center;
+    font-size: 150px;
+    font-weight: 500;
+      
+  }
